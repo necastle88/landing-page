@@ -33,19 +33,18 @@ const hideNavWhenScrolling = (navList) => {
   let isScrolling;
 
   window.addEventListener(
-    "scroll",
-    () => {
+    "scroll", () => {
       let currentScrollPostion = Math.floor(window.pageYOffset);
 
       window.clearTimeout(isScrolling);
       isScrolling = setTimeout(() => {
         navList.classList.add("navbar__menu");
         navList.classList.remove("navbar__menu-hidden");
-      }, 400);
+      }, 550);
 
       if (
         previousScrollPosition < currentScrollPostion &&
-        currentScrollPostion > 300
+        currentScrollPostion > 500
       ) {
         navList.classList.remove("navbar__menu");
         navList.classList.add("navbar__menu-hidden");
@@ -91,10 +90,12 @@ const highlightNavLinkOnScroll = () => {
       const sectionId = section.getAttribute("id");
       currentSection = document.querySelector(`.${sectionId}`);
       const sectionTop = section.offsetTop;
-      if (pageYOffset + 150 > sectionTop && pageYOffset - 150 < sectionTop) {
+      if (pageYOffset + 350 > sectionTop && pageYOffset - 350 < sectionTop) {
         currentSection.classList.add("active");
+        section.classList.add("your-active-class");
       } else {
         currentSection.classList.remove("active");
+        section.classList.remove("your-active-class");
       }
     }
   });
