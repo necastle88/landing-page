@@ -23,6 +23,14 @@ const buildNav = (sections, navList) => {
     linkItem.classList.add(`${sectionId}`);
     linkItem.textContent = `${sectionData}`;
 
+    linkItem.addEventListener("click", e => {
+      e.preventDefault();
+      document.getElementById(sectionId).scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest"
+      })
+    })
     navList.appendChild(linkList).appendChild(linkItem);
   }
 };
@@ -101,6 +109,7 @@ const highlightNavLinkOnScroll = () => {
   });
 };
 
+//Scrolls to top 
 const toTopOnClick = (btn) => {
   btn.addEventListener("click", () => {
     window.scrollTo({
@@ -110,7 +119,7 @@ const toTopOnClick = (btn) => {
   });
 };
 
-// Adds class to nav so styles stayt consitent
+// Adds class to nav so styles stays consistent
 addMenuClass(navList);
 
 // Build menu
